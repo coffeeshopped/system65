@@ -1,0 +1,16 @@
+#N canvas 545 80 669 531 10;
+#X obj 134 152 phasor~;
+#X obj 165 185 >~;
+#X obj 250 124 clip~ 0.001 0.999;
+#X obj 90 29 inlet~;
+#X obj 239 26 inlet~;
+#X obj 165 238 outlet~;
+#X obj 132 124 p.cv2freq~;
+#X obj 165 212 scale~ 0 1 -1 1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 1 1;
+#X connect 3 0 6 0;
+#X connect 4 0 2 0;
+#X connect 6 0 0 0;
+#X connect 7 0 5 0;
