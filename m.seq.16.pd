@@ -2,22 +2,20 @@
 #X obj 245 161 i;
 #X obj 278 163 + 1;
 #X obj 278 189 % 16;
-#X obj 244 131 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
 #X msg 264 133 0;
 #X obj 287 353 sig~;
-#X obj 157 125 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 157 137 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 408 105 list prepend 0;
 #X obj 214 282 > 0;
 #X obj 214 305 sel 1;
 #X obj 287 306 gate;
 #X obj 236 242 t f f;
-#X obj 213 93 trig.detect;
+#X obj 202 61 trig.detect;
 #X obj 303 93 trig.detect;
 #X obj 287 328 scal 0 120 0 1;
 #X obj 210 329 trig~;
-#X obj 213 64 inlet~;
+#X obj 202 32 inlet~;
 #X obj 296 30 inlet~;
 #X obj 406 43 inlet;
 #X obj 288 413 outlet~;
@@ -27,36 +25,51 @@
 #X obj 409 330 tabdump \$0-seq16;
 #X obj 247 219 tabread \$0-seq16;
 #X text 29 186 TODO: add step shift param;
-#X obj 47 11 cnv 15 36 128 empty empty empty 20 12 0 14 -237178 -66577
+#X obj 47 23 cnv 15 36 128 empty empty empty 20 12 0 14 -237178 -66577
 0;
-#X obj 118 11 cnv 15 36 128 empty empty empty 20 12 0 14 -237178 -66577
+#X obj 118 23 cnv 15 36 128 empty empty empty 20 12 0 14 -237178 -66577
+0;
+#X obj 200 90 delay 1;
+#X text 21 223 added 1ms delay to trigger so that reset trig takes
+precedence...;
+#X obj 12 88 cnv 15 142 1 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 12 54 cnv 15 142 1 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 12 120 cnv 15 142 1 empty empty empty 20 12 0 14 -191407 -262144
 0;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array \$0-seq16 16 float 2;
 #X coords 0 127 16 0 144 128 2 0 0;
-#X restore 11 11 graph;
+#X restore 11 23 graph;
+#X obj 11 12 hradio 9 1 0 16 empty empty empty 0 -8 0 10 -262144 -1
+-1 4;
+#X msg 366 163 set \$1;
 #X connect 0 0 1 0;
-#X connect 0 0 24 0;
+#X connect 0 0 23 0;
+#X connect 0 0 34 0;
 #X connect 1 0 2 0;
 #X connect 2 0 0 1;
-#X connect 3 0 0 0;
-#X connect 4 0 0 1;
-#X connect 5 0 19 0;
-#X connect 6 0 23 0;
-#X connect 7 0 22 0;
-#X connect 8 0 9 0;
-#X connect 8 0 10 0;
-#X connect 9 0 15 0;
-#X connect 10 0 14 0;
-#X connect 11 0 10 1;
-#X connect 11 1 8 0;
+#X connect 3 0 0 1;
+#X connect 4 0 18 0;
+#X connect 5 0 22 0;
+#X connect 6 0 21 0;
+#X connect 7 0 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 14 0;
+#X connect 9 0 13 0;
+#X connect 10 0 9 1;
+#X connect 10 1 7 0;
+#X connect 11 0 27 0;
 #X connect 12 0 3 0;
 #X connect 13 0 4 0;
-#X connect 14 0 5 0;
-#X connect 15 0 20 0;
+#X connect 14 0 19 0;
+#X connect 15 0 11 0;
 #X connect 16 0 12 0;
-#X connect 17 0 13 0;
-#X connect 18 0 7 0;
-#X connect 23 0 21 0;
-#X connect 24 0 11 0;
-#X coords 0 -1 1 1 163 130 2 10 10;
+#X connect 17 0 6 0;
+#X connect 22 0 20 0;
+#X connect 23 0 10 0;
+#X connect 27 0 0 0;
+#X connect 33 0 1 0;
+#X connect 34 0 33 0;
+#X coords 0 -1 1 1 163 144 2 10 10;
